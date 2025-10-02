@@ -7,6 +7,7 @@ const WALK_SPEED := 200
 var released := false
 var state: PlayerState
 var state_factory: PlayerStateFactory
+var can_double_jump: bool = true
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -17,32 +18,30 @@ func _ready() -> void:
 func _physics_process(delta):
     if not is_on_floor():
         velocity.y += delta * GRAVITY
+        if velocity.y > -150:
+            state.apex()
+        if velocity.y > 0:
+            state.freefall()
     
-
-    if not is_on_floor() and velocity.y > 0:
-        GRAVITY = 1800
+    
+    if Input.is_action_just_released("ui_up"):
+        state.jump_released()
+        
+    if Input.is_action_just_pressed("ui_up"):
+        state.jump()
     
     if is_on_floor():
         GRAVITY = 1000
-        released = false
-    if is_on_floor() and Input.is_action_just_pressed("ui_up"):
-        velocity.y -= 500
-    
-    if !is_on_floor() and Input.is_action_just_released("ui_up") and velocity.y < 0 && !released:
-        velocity.y = -150
-        released = true
+        can_double_jump = true
+        state.grounded()
+
 
     if Input.is_action_pressed("ui_left"):
-        animated_sprite_2d.flip_h = true
-        animated_sprite_2d.play("run")
-        velocity.x = -WALK_SPEED
+        state.move_left()
     elif Input.is_action_pressed("ui_right"):
-        animated_sprite_2d.flip_h = false
-        animated_sprite_2d.play("run")
-        velocity.x =  WALK_SPEED
+        state.move_right()
     else:
-        animated_sprite_2d.play("idle")
-        velocity.x = 0
+        state.stop()
 
 
     # "move_and_slide" already takes delta time into account.

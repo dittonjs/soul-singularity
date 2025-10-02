@@ -1,12 +1,15 @@
 class_name PlayerStateFactory
 
 
-var states
-
-func _init():
-    states = {
-        "idle": IdleState,
+var states :=  {
+    "idle": IdleState,
+    "run": RunState,
+    "jump_up": JumpUpState,
+    "jump_apex": JumpApexState,
+    "jump_freefall": JumpFreefallState
 }
+
+
 
 func get_state(state_name):
     if states.has(state_name):

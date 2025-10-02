@@ -22,7 +22,7 @@ func move_right():
         _flip_direction()
 
 func jump():
-    change_state.call("jump")
+    change_state.call("jump_up")
     
 func freefall():
-    change_state.call("freefall")
+    change_state.call("jump_freefall")
