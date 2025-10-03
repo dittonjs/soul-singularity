@@ -4,7 +4,6 @@ class_name Player
 
 var GRAVITY := 1000.0
 const WALK_SPEED := 200
-var released := false
 var state: PlayerState
 var state_factory: PlayerStateFactory
 var can_double_jump: bool = true
