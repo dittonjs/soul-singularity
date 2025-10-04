@@ -7,7 +7,7 @@ var animated_sprite: AnimatedSprite2D
 var player: Player
 
 func _physics_process(_delta):
-    player.move_and_slide()
+    pass
 
 func setup(change_state: Callable, animated_sprite: AnimatedSprite2D, player: Player):
     self.change_state = change_state
@@ -38,11 +38,24 @@ func freefall():
     pass
 
 func attack():
-    pass
+    if player.can_attack:
+        change_state.call("attack")
+        player.attack_timer.start(.2)
 
 func take_damage():
     pass
     
 func grounded():
+    pass
+    
+func attack_timer_timeout():
+    pass
+    
+func dash():
+    if player.can_dash:
+        change_state.call("dash")
+        player.can_dash = false
+        
+func dash_timer_timeout():
     pass
     

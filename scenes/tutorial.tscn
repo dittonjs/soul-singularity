@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://76jv7ihisfq6"]
+[gd_scene load_steps=4 format=4 uid="uid://76jv7ihisfq6"]
 
 [ext_resource type="TileSet" uid="uid://bukx2f0e3500u" path="res://assets/world.tres" id="1_8ho6b"]
 [ext_resource type="PackedScene" uid="uid://0rg2toffl4bb" path="res://scenes/player.tscn" id="2_ph3nu"]
+[ext_resource type="PackedScene" uid="uid://cc8xisy120at5" path="res://scenes/boss.tscn" id="3_ph3nu"]
 
 [node name="Tutorial" type="Node2D"]
 
@@ -13,3 +14,9 @@ tile_set = ExtResource("1_8ho6b")
 position = Vector2(276, 548)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(32, 32)
+zoom = Vector2(1.6, 1.6)
+position_smoothing_enabled = true
+
+[node name="Boss" parent="." instance=ExtResource("3_ph3nu")]
+position = Vector2(494, 422)

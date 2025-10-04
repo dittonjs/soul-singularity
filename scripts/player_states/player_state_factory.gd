@@ -6,7 +6,9 @@ var states :=  {
     "run": RunState,
     "jump_up": JumpUpState,
     "jump_apex": JumpApexState,
-    "jump_freefall": JumpFreefallState
+    "jump_freefall": JumpFreefallState,
+    "attack": AttackState,
+    "dash": DashState
 }
 
 
