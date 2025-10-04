@@ -1,10 +1,16 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bukx2f0e3500u"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bukx2f0e3500u"]
 
 [ext_resource type="Texture2D" uid="uid://41oc7jsfwc7g" path="res://icon.svg" id="1_h86ru"]
+[ext_resource type="Shader" uid="uid://dq43bbshba4tw" path="res://background.gdshader" id="1_yqhqu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4d1h"]
+shader = ExtResource("1_yqhqu")
+shader_parameter/tilecolor = Color(0.18717614, 0.18717614, 0.18717614, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqhqu"]
 texture = ExtResource("1_h86ru")
 0:0/0 = 0
+0:0/0/material = SubResource("ShaderMaterial_e4d1h")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
